@@ -1,7 +1,7 @@
 # Amin Boulouma
 ### Software Engineer & Systems Architect
 
-[🏠 Documentation Hub](#) | [📝 Engineering Blog](#) | [💻 GitHub Repository](https://github.com/aminblm)
+[🏠 Documentation Hub](https://aminblm.github.io/ai_systems_design_from_scratch/) | [📝 Engineering Blog](https://aminblm.github.io/ai_systems_design_from_scratch/) | [💻 GitHub Repository](https://github.com/aminblm)
 
 ---
 
@@ -15,12 +15,12 @@
 ### 📂 [AI Systems Design From Scratch: The Zero-Dependency Manifesto](#)
 *June 19, 2026 • `Architecture`*
 A deep-tech architectural blueprint for rebuilding enterprise infrastructure—including distributed load balancers, storage engines, and container daemons—entirely from first principles.
-[Read Breakdown →](#)
+[Read Breakdown →](https://aminblm.github.io/ai_systems_design_from_scratch/)
 
 ### 📂 [Log: Evolution of a First-Principles Architectural Paradigm](#)
 *June 19, 2026 • `Engineering Log`*
 A behind-the-scenes look at aggressive refactoring loops, stripping out anti-patterns like global Singletons, and implementing strict SOLID designs over custom text parsers.
-[Read Log →](#)
+[Read Log →](https://aminblm.github.io/ai_systems_design_from_scratch/)
 
 ---
 
