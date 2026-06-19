@@ -1,188 +1,412 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en-US">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amin Boulouma | First-Principles Systems Architect</title>
+    <title>Amin Boulouma | AI Systems Design From Scratch</title>
+    <meta name="generator" content="Jekyll v3.10.0" />
+    <meta property="og:title" content="AI Systems Design From Scratch" />
+    <meta name="author" content="Amin Boulouma" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Rebuilding enterprise systems and AI from first principles." />
+    <meta property="og:description" content="Rebuilding enterprise systems and AI from first principles." />
+    <link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch/blog/" />
+    <meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch/blog/" />
+    <meta property="og:site_name" content="AI Systems Design From Scratch" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="AI Systems Design From Scratch" />
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebPage",
+      "author":{"@type":"Person","name":"Amin Boulouma"},
+      "description":"Rebuilding enterprise systems and AI from first principles.",
+      "headline":"AI Systems Design From Scratch",
+      "url":"https://aminblm.github.io/ai_systems_design_from_scratch/blog/"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <style>
-        :root {
-            --bg: #0d1117;
-            --surface: #161b22;
-            --border: #30363d;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --accent-green: #2ea44f;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+      :root {
+        --bg: #0a0c10;
+        --surface: #12151c;
+        --surface-card: #161b24;
+        --border: #212631;
+        --border-hover: #303644;
+        --text-primary: #f0f6fc;
+        --text-secondary: #8b949e;
+        --accent: #58a6ff;
+        --accent-glow: rgba(88, 166, 255, 0.15);
+        --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
 
-        header {
-            border-bottom: 1px solid var(--border);
-            padding: 2rem 1rem;
-            text-align: center;
-            background: var(--surface);
-        }
+      * { box-sizing: border-box; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
+      body {
+        font-family: var(--font-sans);
+        background-color: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
 
-        h1, h2, h3 {
-            color: #fff;
-            font-weight: 600;
-        }
+      #skip-to-content {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        background: var(--accent);
+        color: var(--bg);
+        padding: 0.5rem 1rem;
+        z-index: 100;
+        transition: top 0.2s;
+      }
+      #skip-to-content:focus { top: 0; }
 
-        h1 { margin-bottom: 0.5rem; font-size: 2.2rem; }
-        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-top: 0; }
+      .page-header {
+        background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+        border-bottom: 1px solid var(--border);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
 
-        .nav-links {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
+      .project-name {
+        font-size: 2.75rem;
+        font-weight: 700;
+        margin: 0 0 0.75rem 0;
+        letter-spacing: -0.03em;
+        background: linear-gradient(120deg, #fff 40%, var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .nav-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
+      .project-tagline {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 2rem auto;
+        font-weight: 400;
+      }
 
-        .nav-links a:hover { text-decoration: underline; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--surface-card);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+      .btn:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 12px var(--accent-glow);
+        transform: translateY(-1px);
+      }
 
-        .manifesto-box {
-            background: linear-gradient(145deg, #1f242c, var(--surface));
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-bottom: 3rem;
-        }
+      .main-content {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+      }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
+      .nav-toolbar {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin: 2.5rem 0;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-toolbar .btn {
+        background-color: var(--surface);
+      }
 
-        @media(min-width: 768px) {
-            .grid { grid-template-columns: 1fr 1fr; }
-        }
+      h1#engineering-blog-archive {
+        font-size: 1.75rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+      }
 
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1.5rem;
-            transition: transform 0.2s, border-color 0.2s;
-        }
+      .author-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 0.75rem 1.2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        display: inline-block;
+      }
+      .author-card p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); }
+      .author-card strong { color: var(--text-primary); }
 
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: #8b949e;
-        }
+      hr {
+        border: 0;
+        height: 1px;
+        background: var(--border);
+        margin: 2.5rem 0;
+      }
 
-        .card h3 { margin-top: 0; color: var(--accent); }
-        .card-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
 
-        .badge {
-            background-color: #21262d;
-            color: var(--text-main);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-        }
+      ul li {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.2s ease;
+        position: relative;
+      }
 
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-        }
+      ul li:hover {
+        border-color: var(--border-hover);
+        background: var(--surface-card);
+        transform: translateX(4px);
+      }
+
+      ul li strong {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--accent);
+        background: var(--accent-glow);
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+
+      ul li a {
+        display: block;
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+      ul li a:hover { color: var(--accent); }
+
+      ul li small em {
+        font-style: normal;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        display: block;
+        line-height: 1.5;
+      }
+
+      .site-footer {
+        margin-top: 5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .site-footer a { color: var(--text-primary); text-decoration: none; }
+      .site-footer a:hover { color: var(--accent); }
+
+      @media (max-width: 600px) {
+        .project-name { font-size: 2rem; }
+        .page-header { padding: 2.5rem 1rem; }
+        .site-footer { flex-direction: column; text-align: center; }
+      }
     </style>
-</head>
-<body>
-
-    <header>
-        <h1>Amin Boulouma</h1>
-        <p class="subtitle">Software Engineer & Systems Architect</p>
-        <div class="nav-links">
-            <a href="https://aminblm.github.io/ai_systems_design_from_scratch/">🏠 Documentation Hub</a>
-            <a href="https://aminblm.github.io/ai_systems_design_from_scratch/">📝 Engineering Blog</a>
-            <a href="https://github.com/aminblm" target="_blank">💻 GitHub Repository</a>
-        </div>
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+    
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Amin Boulouma</h1>
+      <h2 class="project-tagline">Rebuilding enterprise platforms and AI engines from first principles.</h2>
+      <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn">View Project on GitHub</a>
     </header>
+    
+    <main id="content" class="main-content" role="main">
+      <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer">
+          <img alt="AI Systems Design From First Principles" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239" style="border-radius: 8px;" />
+        </a>
+        <a href="https://linktr.ee/aminboulouma" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; background-color: var(--text-primary); color: var(--bg); text-decoration: none; font-weight: 600; border-radius: 8px; font-size: 0.9rem; transition: transform 0.2s ease;">Connect Official</a>
+      </div>
+      
+      <div class="nav-toolbar">
+        <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn">🏠 Documentation Hub</a>
+        <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn">📝 Engineering Blog</a>
+        <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn">💻 GitHub Repository</a>
+      </div>
 
-    <div class="container">
-        
-        <section class="manifesto-box">
-            <h2>The Zero-Dependency Manifesto</h2>
-            <p>Rebuilding enterprise system backends, network protocols, and core AI infrastructure completely from scratch. No bloated frameworks. No external packages. Pure, deterministic execution from first principles.</p>
-        </section>
+      <h1 id="engineering-blog-archive">Engineering Blog Archive</h1>
+      <div class="author-card">
+        <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+      </div>
+      
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Welcome to the first-principles systems design log. Below is the full index of software architectures built entirely from scratch:</p>
+      
+      <hr />
+      
+      <ul>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/from-first-principles-rebuilding-the-enterprise-and-ai-stack-with-zero-dependencies/">From First Principles: Rebuilding the Enterprise and AI Stack with Zero Dependencies</a>
+          <small><em>A deep-tech architectural blueprint for rebuilding enterprise infrastructure—including distributed load balancers, storage engines, and container daemons—entirely from first principles.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/engineering-log-evolution-of-a-firstprinciples-architectural-paradigm/">Engineering Log: Evolution of a First-Principles Architectural Paradigm</a>
+          <small><em>A behind-the-scenes look at the development cycle from June 16 to June 19, tracking the aggressive refactoring loops, the implementation of SOLID design patterns, and the architectural shift toward type-safe, low-level I/O primitives.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/the-shared-backbone-creating-the-core-utilities-layer/">The Shared Backbone: Creating the Core Utilities Layer</a>
+          <small><em>Exploring the low-level foundation: Implementing cross-platform binary file I/O primitives and TCP network socket utilities for asset-watching servers.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/parsing-site-configurations-with-a-custom-yaml-engine/">Parsing Site Configurations with a Custom YAML Engine</a>
+          <small><em>How to implement a deterministic, stateless string-slicing configuration engine to map global site configuration metadata without external packages.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/endtoend-integration-testing-with-concrete-templates/">End-to-End Integration Testing of Jekyll with Concrete Templates</a>
+          <small><em>Putting it all together: Validating the static site pipeline with recursive variable hydration, master layouts, and real compilation streams.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/deep-dive-building-a-custom-markdowntohtml-engine-from-scratch/">Deep Dive: Building a Custom Markdown-to-HTML Engine from Scratch</a>
+          <small><em>Learn how to write a lightweight, line-by-line Markdown parser using the Fluent Builder pattern and token-splitting logic without abstract syntax trees.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-19</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-minimalist-jekyll-clone-from-scratch-in-python/">Building a Minimalist Jekyll Clone From Scratch in Python</a>
+          <small><em>Demystifying static site generators: Implementing a zero-dependency Jekyll clone in Python using the Facade pattern and a decoupled architecture.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-elasticsearch-in-python-from-scratch/">Building a Custom ElasticSearch Clone in Pure Python</a>
+          <small><em>A deep dive into parsing JSON DSL queries, aggregations, and distributed sharding algorithms using only the Python standard library.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-an-oop-jekyll-slug-generator-from-scratch/">Building an OOP Jekyll Slug Generator From Scratch</a>
+          <small><em>Demystifying static site data pipelines: Implementing a text tokenization pipe and clean URL filename compiler using Object-Oriented Design in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-an-interactive-tcp-chat-client-from-scratch/">Building an Interactive TCP Chat Client From Scratch</a>
+          <small><em>Demystifying network communications: Implementing a streaming socket descriptor, raw byte encoder, and standard IO interface in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-an-inmemory-keyvalue-store-from-scratch/">Building an In-Memory Key-Value Store From Scratch</a>
+          <small><em>Demystifying high-performance data structures: Implementing a stateful, dictionary-backed cache engine with primitive RDB snapshotting and AOF logging in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-stateless-lexical-reply-engine-from-scratch/">Building a Stateless Lexical Reply Engine From Scratch</a>
+          <small><em>Demystifying natural language interfaces: Implementing an in-memory dictionary routing matrix and standard input loop in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-stateful-tcp-chat-server-from-scratch/">Building a Stateful TCP Chat Server From Scratch</a>
+          <small><em>Demystifying network layer fundamentals: Implementing an event-driven master socket server listener and greeting dispatch engine in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-reusable-socket-bootstrap-utility/">Building a Reusable Socket Bootstrap Utility</a>
+          <small><em>Demystifying transport-layer utilities: Implementing encapsulated network factories for connection-oriented server bindings and client handshakes in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-relational-sql-database-engine-abstraction-from-scratch/">Building a Relational SQL Database Engine Abstraction From Scratch</a>
+          <small><em>Demystifying storage-layer gateways: Implementing a stateful relational database manager and virtual cursor orchestration interface in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-reactive-frontend-framework-from-scratch.md/">Building a Reactive Frontend Framework from Scratch</a>
+          <small><em>Demystifying component-based web architectures: Implementing a declarative state binder, component registry, and custom event dispatcher loop in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-pure-http-rest-api-server-from-scratch/">Building a Pure HTTP REST API Server From Scratch</a>
+          <small><em>Demystifying application-layer routing infrastructure: Implementing an HTTP/1.1 protocol engine, text payload string parser, and RESTful router in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-pure-http-client-over-raw-sockets/">Building a Pure HTTP Client over Raw Sockets</a>
+          <small><em>Demystifying application-layer transport protocols: Implementing a declarative REST API client using pure Python socket descriptors.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-nosql-document-store-from-scratch/">Building a NoSQL Document Store From Scratch</a>
+          <small><em>Demystifying unstructured data systems: Implementing a stateful database engine, document collection structures, and collection sharding mechanics in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-faulttolerant-load-balancer-from-scratch/">Building a Fault-Tolerant Load Balancer From Scratch</a>
+          <small><em>Demystifying distributed systems infrastructure: Implementing a failover routing coordinator and functional backend pool proxy in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-custom-git-server-daemon-from-scratch/">Building a Custom Git Server Daemon From Scratch</a>
+          <small><em>Demystifying distributed version control network backends: Implementing a stateful, wire-serialized Git server using pure Python socket infrastructure.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-custom-git-client-over-raw-sockets.md/">Building a Custom Git Client over Raw Sockets</a>
+          <small><em>Demystifying distributed version control network layers: Implementing a lightweight, wire-serialized Git client using pure Python socket subsystems.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-custom-docker-daemon-engine-from-scratch/">Building a Custom Docker Daemon Engine From Scratch</a>
+          <small><em>Demystifying container orchestration backends: Implementing a stateful, stream-oriented orchestration server with custom command processing in pure Python.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-custom-docker-cli-client-in-pure-python.md/">Building a Custom Docker CLI Client in Pure Python</a>
+          <small><em>Demystifying container virtualization orchestration: Implementing a low-level, socket-multiplexed command line interface client from first principles.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/building-a-custom-airflow-dag-scheduler-in-pure-python/">Building a Custom Airflow DAG Scheduler in Pure Python</a>
+          <small><em>An architectural breakdown of data engineering orchestration: implementing Directed Acyclic Graphs (DAGs), task state tracking, and a clock-driven execution engine loop from scratch.</em></small>
+        </li>
+        <li>
+          <strong>2026-06-16</strong>
+          <a href="/ai_systems_design_from_scratch/ai-systems-design-from-scratch-the-zerodependency-manifesto/">AI Systems Design From Scratch: The Zero-Dependency Manifesto</a>
+          <small><em>Demystifying production infrastructure: Building deep-tech AI engines, web protocols, and distributed platforms from first principles with a strict zero-dependency mandate.</em></small>
+        </li>
+      </ul>
+      
+      <hr />
 
-        <section>
-            <h2>Latest Architectural Breakdowns</h2>
-            <div class="grid">
-                
-                <div class="card">
-                    <div class="card-meta">June 19, 2026 &middot; <span class="badge">Architecture</span></div>
-                    <h3>AI Systems Design From Scratch: The Zero-Dependency Manifesto</h3>
-                    <p>A deep-tech architectural blueprint for rebuilding enterprise infrastructure—including distributed load balancers, storage engines, and container daemons—entirely from first principles.</p>
-                    <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">Read Breakdown &rarr;</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-meta">June 19, 2026 &middot; <span class="badge">Engineering Log</span></div>
-                    <h3>Log: Evolution of a First-Principles Architectural Paradigm</h3>
-                    <p>A behind-the-scenes look at aggressive refactoring loops, stripping out anti-patterns like global Singletons, and implementing strict SOLID designs over custom text parsers.</p>
-                    <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">Read Log &rarr;</a>
-                </div>
-
-            </div>
-        </section>
-
-        <section style="margin-top: 4rem;">
-            <h2>Core Infrastructure Frameworks Implemented</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Custom ElasticSearch Clone</h3>
-                    <p>JSON DSL query parsing, custom token aggregations, and distributed sharding algorithms built natively in pure Python.</p>
-                </div>
-                <div class="card">
-                    <h3>Custom Docker Daemon Engine</h3>
-                    <p>Stream-oriented orchestration servers and raw socket-multiplexed CLI clients engineered from scratch.</p>
-                </div>
-                <div class="card">
-                    <h3>Fault-Tolerant Load Balancer</h3>
-                    <p>Failover routing coordinators and functional backend pool proxies over native network sockets.</p>
-                </div>
-                <div class="card">
-                    <h3>In-Memory Key-Value Store</h3>
-                    <p>Stateful, dictionary-backed cache engine utilizing native RDB snapshotting and Append-Only File (AOF) logging.</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>aminblm.github.io is maintained by <a href="https://github.com/aminblm" style="color: var(--text-muted);">aminblm</a> &middot; Built from first principles.</p>
-    </footer>
-
-</body>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/aminblm/ai_systems_design_from_scratch">ai_systems_design_from_scratch</a> is maintained by <a href="https://github.com/aminblm">aminblm</a>.</span>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
 </html>
