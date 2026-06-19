@@ -12,12 +12,12 @@
 
 ## 📝 Latest Architectural Breakdowns
 
-### 📂 [AI Systems Design From Scratch: The Zero-Dependency Manifesto](#)
+### 📂 [AI Systems Design From Scratch: The Zero-Dependency Manifesto](https://aminblm.github.io/ai_systems_design_from_scratch/)
 *June 19, 2026 • `Architecture`*
 A deep-tech architectural blueprint for rebuilding enterprise infrastructure—including distributed load balancers, storage engines, and container daemons—entirely from first principles.
 [Read Breakdown →](https://aminblm.github.io/ai_systems_design_from_scratch/)
 
-### 📂 [Log: Evolution of a First-Principles Architectural Paradigm](#)
+### 📂 [Log: Evolution of a First-Principles Architectural Paradigm](https://aminblm.github.io/ai_systems_design_from_scratch/)
 *June 19, 2026 • `Engineering Log`*
 A behind-the-scenes look at aggressive refactoring loops, stripping out anti-patterns like global Singletons, and implementing strict SOLID designs over custom text parsers.
 [Read Log →](https://aminblm.github.io/ai_systems_design_from_scratch/)
