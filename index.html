@@ -3,92 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amin Boulouma's Portfolio</title>
-    <link rel="shortcut icon" type="image/jpeg" href="https://media.licdn.com/dms/image/v2/D4D03AQE7o3agLWMtvQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1723026751692?e=2147483647&v=beta&t=Vnd4btVxQHnhwigPcOL0gr7_fQl3Y93oPx7COfzAJXo"/>            
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style type="text/tailwindcss" >
+    <title>Amin Boulouma | First-Principles Systems Architect</title>
+    <style>
         :root {
-            --primary: rgb(88, 40, 244);
-            --primary-hover: rgb(69, 29, 200);
-            --font1: 'Lobster', sans-serif;
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-green: #2ea44f;
         }
-        .navitems>li>a {
-            @apply p-4 hover:bg-gray-700 rounded-lg flex items-center gap-2
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        h1 {
-            font-size: 4rem;
-            line-height: 1.2;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-family: 'Lobster';
-        }
-        .button {
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 1rem;
             text-align: center;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            padding: 0 1rem;
-            min-height: 3.3rem;
+            background: var(--surface);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        h1, h2, h3 {
+            color: #fff;
             font-weight: 600;
-            box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
-            transition-property: transform;
-            transition-duration: .2s;
-            color: white;
-            background-color: var(--primary);
         }
-        .button:hover {
-            background-color: var(--primary-hover);
+
+        h1 { margin-bottom: 0.5rem; font-size: 2.2rem; }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-top: 0; }
+
+        .nav-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
         }
-        .button:active {
-            transform: scale(0.95);
+
+        .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover { text-decoration: underline; }
+
+        .manifesto-box {
+            background: linear-gradient(145deg, #1f242c, var(--surface));
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media(min-width: 768px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: #8b949e;
+        }
+
+        .card h3 { margin-top: 0; color: var(--accent); }
+        .card-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+
+        .badge {
+            background-color: #21262d;
+            color: var(--text-main);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
         }
     </style>
 </head>
+<body>
 
-<body class="">
-
-    <header class="flex items-center bg-gray-800 justify-between px-8 h-20 text-white sticky top-0 z-50">
-        <logo>
-            <a class="flex items-center gap-1" href="">
-                <img class="h-10 -mt-1 rounded-full object-cover" src="https://media.licdn.com/dms/image/v2/D4D03AQE7o3agLWMtvQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1723026751692?e=2147483647&v=beta&t=Vnd4btVxQHnhwigPcOL0gr7_fQl3Y93oPx7COfzAJXo" alt="Amin Boulouma, Software Engineer"/>            
-                <span>Amin Boulouma</span>
-            </a>
-
-        </logo>
-        <nav>
-            <ul class="flex items-center navitems">
-                <li><a href="">Home</a></li>
-                <li><a href="">Projects</a></li>
-                <li><a href="">Resume</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">
-                    Services
-                    <img class="w-4" src="https://img.icons8.com/ios/50/777777/expand-arrow--v1.png" alt="expand-arrow--v1"/>
-                </a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </nav>
+    <header>
+        <h1>Amin Boulouma</h1>
+        <p class="subtitle">Software Engineer & Systems Architect</p>
+        <div class="nav-links">
+            <a href="#">🏠 Documentation Hub</a>
+            <a href="#">📝 Engineering Blog</a>
+            <a href="https://github.com/aminblm" target="_blank">💻 GitHub Repository</a>
+        </div>
     </header>
 
-<hero class="grid bg-gray-700 text-white text-center bg-cover bg-center bg-[url('https://t4.ftcdn.net/jpg/03/86/82/73/360_F_386827376_uWOOhKGk6A4UVL5imUBt20Bh8cmODqzx.jpg')]">
-    <div class="col-start-1 row-start-1 bg-gray-800 bg-opacity-40 w-full h-full"></div>
-    <div class="col-start-1 row-start-1 py-24 px-10">
-        <h1>Amin Boulouma</h1>
-        <p class="text-lg font-bold mb-5">Software Engineer</p>
-        <a href="mailto:contact@boulouma.com" class="button">Contact Me</a>
-    </div>
-</hero>
+    <div class="container">
+        
+        <section class="manifesto-box">
+            <h2>The Zero-Dependency Manifesto</h2>
+            <p>Rebuilding enterprise system backends, network protocols, and core AI infrastructure completely from scratch. No bloated frameworks. No external packages. Pure, deterministic execution from first principles.</p>
+        </section>
 
+        <section>
+            <h2>Latest Architectural Breakdowns</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-meta">June 19, 2026 &middot; <span class="badge">Architecture</span></div>
+                    <h3>AI Systems Design From Scratch: The Zero-Dependency Manifesto</h3>
+                    <p>A deep-tech architectural blueprint for rebuilding enterprise infrastructure—including distributed load balancers, storage engines, and container daemons—entirely from first principles.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">Read Breakdown &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-meta">June 19, 2026 &middot; <span class="badge">Engineering Log</span></div>
+                    <h3>Log: Evolution of a First-Principles Architectural Paradigm</h3>
+                    <p>A behind-the-scenes look at aggressive refactoring loops, stripping out anti-patterns like global Singletons, and implementing strict SOLID designs over custom text parsers.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">Read Log &rarr;</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2>Core Infrastructure Frameworks Implemented</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Custom ElasticSearch Clone</h3>
+                    <p>JSON DSL query parsing, custom token aggregations, and distributed sharding algorithms built natively in pure Python.</p>
+                </div>
+                <div class="card">
+                    <h3>Custom Docker Daemon Engine</h3>
+                    <p>Stream-oriented orchestration servers and raw socket-multiplexed CLI clients engineered from scratch.</p>
+                </div>
+                <div class="card">
+                    <h3>Fault-Tolerant Load Balancer</h3>
+                    <p>Failover routing coordinators and functional backend pool proxies over native network sockets.</p>
+                </div>
+                <div class="card">
+                    <h3>In-Memory Key-Value Store</h3>
+                    <p>Stateful, dictionary-backed cache engine utilizing native RDB snapshotting and Append-Only File (AOF) logging.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>aminblm.github.io is maintained by <a href="https://github.com/aminblm" style="color: var(--text-muted);">aminblm</a> &middot; Built from first principles.</p>
+    </footer>
 
 </body>
-
 </html>
